@@ -1,7 +1,7 @@
-const pug = require('pug');
-      url = require('url');
-      path = require('path');
-      router = require('./router');
+import pug from 'pug';
+import url from 'url';
+import path from 'path';
+import router from './router';
 
 exports.init = function (req,res) {
   const pathView = path.join(__dirname,'.','views');

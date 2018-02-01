@@ -1,7 +1,7 @@
-const path = require('path');
-      route = require('./routes');
-      url = require('url');
-      fs = require('fs'),
+import path from "path";
+import route from "./routes";
+import url from "url";
+import fs from "fs";
 
 
 exports.route = function (pathname,req,res) {

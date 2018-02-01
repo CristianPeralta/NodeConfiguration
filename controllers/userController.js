@@ -10,5 +10,9 @@ module.exports = {
   user(erq,res){
     res.render('index',{data:'Rendering data from controller - User'});
     console.log('show all users');
+  },
+  profile(erq,res){
+    res.render('index',{data:'Rendering data from controller - Profile'});
+    console.log('show user profile');
   }
 }

@@ -1,6 +1,6 @@
-const http = require("http");
-      url = require("url");
-      helper = require('./helper')
+import http from "http";
+import url from "url";
+import helper from "./helper";
 
 
 function onRequest(req,res) {
