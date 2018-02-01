@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/CristianPeralta/NodeConfiguration#readme",
   "devDependencies": {
-    "nodemon": "^1.14.11"
+    "nodemon": "^1.14.11",
+    "pug": "^2.0.0-rc.4"
   }
 }

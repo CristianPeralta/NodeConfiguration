@@ -1,5 +1,6 @@
 const http = require("http");
-const url = require("url");
+      url = require("url");
+      helper = require('./helper')
 
 
 function onRequest(req,res) {
@@ -10,7 +11,7 @@ function onRequest(req,res) {
 }
 
 exports.init = function (port,hostname) {
-  const server = http.createServer(onRequest).listen(port,hostname,()=>{
+  const server = http.createServer(helper.init).listen(port,hostname,()=>{
     console.log(`Listening on http://${hostname}:${port}`);
   })
 }
