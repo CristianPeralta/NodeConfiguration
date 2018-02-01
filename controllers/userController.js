@@ -4,9 +4,11 @@ module.exports = {
     res.render('index',{data:'Rendering data from controller'});
   },
   store(erq,res){
+    res.render('index',{data:'Rendering data from controller - Store'});
     console.log('storing a user');
   },
   user(erq,res){
+    res.render('index',{data:'Rendering data from controller - User'});
     console.log('show all users');
   }
 }
