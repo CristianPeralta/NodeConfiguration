@@ -1,0 +1,24 @@
+{
+  "name": "NodeConfiguration",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon www.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CristianPeralta/NodeConfiguration.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CristianPeralta/NodeConfiguration/issues"
+  },
+  "homepage": "https://github.com/CristianPeralta/NodeConfiguration#readme",
+  "devDependencies": {
+    "nodemon": "^1.14.11"
+  }
+}
