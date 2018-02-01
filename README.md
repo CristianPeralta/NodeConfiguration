@@ -1,5 +1,5 @@
 # NodeConfiguration
 Configuration to work with Nodejs
-
-npm install
-npm run start
+<br>
+<li>npm install</li>
+<li>npm run start</li>
