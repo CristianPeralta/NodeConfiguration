@@ -1,8 +1,10 @@
 import path from "path";
-import route from "../routes/user";
 import url from "url";
 import fs from "fs";
+import routing from "../routes/routes";
+import routes from "./helper-router";
 
+const route = routes.route;
 
 exports.route = function (pathname,req,res) {
 
