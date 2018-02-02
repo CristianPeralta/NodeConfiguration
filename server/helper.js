@@ -4,7 +4,7 @@ import path from 'path';
 import router from './router';
 
 exports.init = function (req,res) {
-  const pathView = path.join(__dirname,'.','views');
+  const pathView = path.join(__dirname,'..','views');
   let body = "";
   let pathname = url.parse(req.url).pathname;
 

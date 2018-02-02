@@ -1,4 +1,4 @@
-import userController from './controllers/userController';
+import userController from '../controllers/userController';
 
 var routes = {};
 var get= {};

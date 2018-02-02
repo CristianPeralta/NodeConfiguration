@@ -1,5 +1,5 @@
 import path from "path";
-import route from "./routes";
+import route from "../routes/user";
 import url from "url";
 import fs from "fs";
 
