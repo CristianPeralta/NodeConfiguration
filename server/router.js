@@ -1,7 +1,10 @@
 import path from "path";
 import url from "url";
 import fs from "fs";
-import routing from "../routes/routes";
+fs.readdirSync('./routes').forEach(file => {
+  require('../routes/'+file);
+});
+
 import routes from "./helper-router";
 
 const route = routes.route;

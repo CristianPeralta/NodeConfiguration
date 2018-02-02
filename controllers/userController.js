@@ -1,18 +1,21 @@
-
 module.exports = {
   index(req,res){
     res.render('index',{data:'Rendering data from controller'});
   },
-  store(erq,res){
+  store(req,res){
     res.render('index',{data:'Rendering data from controller - Store'});
     console.log('storing a user');
   },
-  user(erq,res){
+  user(req,res){
     res.render('index',{data:'Rendering data from controller - User'});
-    console.log('show all users');
+    console.log(req.query);
   },
-  profile(erq,res){
+  profile(req,res){
     res.render('index',{data:'Rendering data from controller - Profile'});
-    console.log('show user profile');
+    console.log(req.body);
+  },
+  edit(req,res){
+    res.render('index',{data:'Rendering data from controller - Edit'});
+    console.log(req.body);
   }
 }
