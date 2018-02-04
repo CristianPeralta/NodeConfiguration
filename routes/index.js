@@ -30,4 +30,19 @@ routes.prefix('/user',function () {
 }
 );
 
+routes.prefix('/book',function () {
+  return {
+    store: function (){
+      return routes.get('/addstore',userController.store)
+    },
+    profile: function (){
+      return routes.post('/addmyprofile',userController.profile)
+    },
+    edit: function (){
+      return routes.put('/addmyedit',userController.edit)
+    }
+  };
+}
+);
+
 exports.default = routes;
