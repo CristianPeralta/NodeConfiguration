@@ -8,6 +8,7 @@ fs.readdirSync('./routes').forEach(file => {
 import routes from "./helper-router";
 
 const route = routes.route;
+console.log(route);
 
 exports.route = function (pathname,req,res) {
 
