@@ -8,17 +8,24 @@ fs.readdirSync('./routes').forEach(file => {
 import routes from "./helper-router";
 
 const route = routes.route;
-console.log(route);
 
 exports.route = function (pathname,req,res) {
 
     console.log(req.method+' : '+pathname);
 
-    let folders = ["js","css","uploads","img"],
-            resource= pathname.split("/")[1];
+    let folders = ["js","css","uploads","img"];
+    let idx = 1;
+    let arrPath = pathname.split("/");
+    for (var i = 0; i < arrPath.length; i++) {
+      if (folders.indexOf(arrPath[i])>=0) {
+        idx = i;
+        i = arrPath.length;
+      }
+    }
+    let resource = arrPath.splice(idx,arrPath.length).join('/');
 
-		if(folders.indexOf(resource)>=0) {
-            getFile("./public", pathname, req, res);
+		if(folders.indexOf(resource.split("/")[0])>=0) {
+            getFile("./public/", resource, req, res);
         } else {
 
           let method = req.method;
@@ -36,7 +43,6 @@ exports.route = function (pathname,req,res) {
 }
 
 function getFile(route, pathname, req, res) {
-
       fs.readFile(route + "" + pathname, function(err, file) {
         if (!file) {
             res.writeHead(404);
