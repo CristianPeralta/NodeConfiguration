@@ -1,16 +1,19 @@
 
 import userController from '../controllers/userController';
-import routes from '../server/helper-router';
+import Router from '../server/classRouter';
+var routes = new Router();
 
 routes.get('/',userController.index);
+routes.get('/store/last',userController.store);
+routes.post('/profile',userController.profile);
+routes.put('/edit',userController.edit);
 
-routes.pre('/user',function () {
-    routes.get('/',userController.user);
-    routes.get('/store/last',userController.store);
-    routes.post('/profile',userController.profile);
-    routes.put('/edit',userController.edit);
+// routes.prefix('/user',function () {
+//     routes.get('/',userController.user);
+//     routes.get('/store/last',userController.store);
+//     routes.post('/profile',userController.profile);
+//     routes.put('/edit',userController.edit);
+//
+// });
 
-});
-
-
-exports.default = routes;
+export default routes;

@@ -11,11 +11,16 @@ module.exports = {
   get(path,cb) {
     return get[prefix+path] = cb;
   },
-  pre(path,obj) {
+  use(path,obj) {
       if (path != '/') {
         prefix = path;
       }
-      let allfunction = obj();
+      for (let method in obj.route) {
+        for (let path in obj.route[method]) {
+          
+          console.log(method+' : '+path+' : '+obj.route[method][path]);
+        }
+      }
       prefix = '';
   },
   post (path,cb){

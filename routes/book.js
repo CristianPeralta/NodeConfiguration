@@ -1,11 +1,8 @@
 import bookController from '../controllers/bookController';
-import routes from '../server/helper-router';
+import Router from '../server/classRouter';
+var routes = new Router();
 
-routes.pre('/book',function () {
-  routes.get('/index',bookController.index);
-  routes.get('/store',bookController.store);
-});
-
-
+  routes.get('/indexB',bookController.index);
+  routes.get('/storeB',bookController.store);
 
 exports.default = routes;
