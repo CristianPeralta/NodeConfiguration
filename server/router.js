@@ -1,14 +1,16 @@
 import path from "path";
 import url from "url";
 import fs from "fs";
+import routes from "./helper-router";
 fs.readdirSync('./routes').forEach(file => {
   require('../routes/'+file);
 });
 
-import routes from "./helper-router";
-
-const route = routes.route;
-console.log(route);
+var route= {};
+exports.init = function () {
+  route = routes.route()
+  console.log(route);
+}
 
 exports.route = function (pathname,req,res) {
 

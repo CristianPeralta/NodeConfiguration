@@ -1,37 +1,53 @@
-
 import path from 'path';
+import router from './router';
 
-var get= {};
-var post= {};
-var put= {};
+var _get= {};
+var _post= {};
+var _put= {};
 var files = {};
 var prefix = '';
+var routes = {
+  'GET': _get,
+  'POST':_post,
+  'PUT':_put
+};
+
+function get(path,cb) {
+    _get[path] = cb;
+}
+function post(path,cb) {
+    _post[path] = cb;
+}
+function put(path,cb) {
+    _put[path] = cb;
+}
 
 module.exports = {
-  get(path,cb) {
-    return get[prefix+path] = cb;
-  },
-  use(path,obj) {
-      if (path != '/') {
-        prefix = path;
+  use(pre,obj) {
+
+      if (pre != '/') {
+        prefix  = pre;
       }
       for (let method in obj.route) {
         for (let path in obj.route[method]) {
-          
-          console.log(method+' : '+path+' : '+obj.route[method][path]);
+          switch (method) {
+            case 'GET':get(prefix+path,obj.route[method][path]);break;
+            case 'POST':post(prefix+path,obj.route[method][path]);break;
+            case 'PUT':put(prefix+path,obj.route[method][path]);break;
+            default:
+
+          }
+          //console.log(method+' : '+pre+path+' : '+obj.route[method]);
         }
       }
       prefix = '';
+      router.init();
   },
-  post (path,cb){
-    return post[prefix+path] = cb;
-  },
-  put (path,cb){
-    return put[prefix+path] = cb;
-  },
-  route :{
-      'GET':get,
-      'POST':post,
-      'PUT':put
+  route (){
+    return {
+    'GET': _get,
+    'POST':_post,
+    'PUT':_put
+    }
   }
 }

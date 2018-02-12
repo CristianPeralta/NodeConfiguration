@@ -4,5 +4,7 @@ var routes = new Router();
 
   routes.get('/indexB',bookController.index);
   routes.get('/storeB',bookController.store);
+  routes.post('/storeB',bookController.store);
+  routes.put('/storeB',bookController.store);
 
-exports.default = routes;
+export default routes;
