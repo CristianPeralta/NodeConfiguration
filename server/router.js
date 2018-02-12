@@ -9,7 +9,6 @@ fs.readdirSync('./routes').forEach(file => {
 var route= {};
 exports.init = function () {
   route = routes.route()
-  console.log(route);
 }
 
 exports.route = function (pathname,req,res) {
@@ -18,17 +17,17 @@ exports.route = function (pathname,req,res) {
 
     let folders = ["js","css","uploads","img"];
     let idx = 1;
-    let arrPath = pathname.split("/");
-    for (var i = 0; i < arrPath.length; i++) {
-      if (folders.indexOf(arrPath[i])>=0) {
-        idx = i;
-        i = arrPath.length;
-      }
-    }
-    let resource = arrPath.splice(idx,arrPath.length).join('/');
+    let arrPath = pathname.split("/")[1];
+    // for (var i = 0; i < arrPath.length; i++) {
+    //   if (folders.indexOf(arrPath[i])>=0) {
+    //     idx = i;
+    //     i = arrPath.length;
+    //   }
+    // }
+    // let resource = arrPath.splice(idx,arrPath.length).join('/');
 
-		if(folders.indexOf(resource.split("/")[0])>=0) {
-            getFile("./public/", resource, req, res);
+		if(folders.indexOf(arrPath)>=0) {/////resource.split("/")[0]
+            getFile("./public/", pathname, req, res);
         } else {
 
           let method = req.method;
