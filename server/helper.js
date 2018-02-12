@@ -4,6 +4,7 @@ import path from 'path';
 import router from './router';
 
 
+
 exports.init = function (req,res) {
   const pathView = path.join(__dirname,'..','views');
   let body = "";
@@ -25,17 +26,19 @@ exports.init = function (req,res) {
     this.send(JSON.stringify(data));
   }
 
-  res.send = function(file, code ) {
-    code = code? code:200;
+  res.send = function(file, code = 200) {
     if(file){
         this.writeHead(200,{ 'Content-Type': 'text/html' })
         this.write(file);
         this.end();
         return;
     }
-    this.writeHead(code,function () {
-      this.end();
-    });
+    this.writeHead(code,{'Content-Type':'text/plain'});
+    this.write('status :'+code);
+    this.end();
+    return;
+  }
+  res.statusCode = function(code) {
   }
 
 
