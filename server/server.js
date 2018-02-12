@@ -3,8 +3,8 @@ import url from "url";
 import helper from "./helper";
 
 
-exports.init = function (port,hostname) {
-  const server = http.createServer(helper.init).listen(port,hostname,()=>{
-    console.log(`Listening on http://${hostname}:${port}`);
+exports.init = function ({host,port}) {
+  const server = http.createServer(helper.init).listen(port,host,()=>{
+    console.log(`Listening on http://${host}:${port}`);
   })
 }

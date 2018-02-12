@@ -3,17 +3,11 @@ import db from "../database/connect";
 import routes from '../server/helper-router';
 import index from '../routes/index';
 import book from '../routes/book';
+import cfg from '../config';
 
-const port = 3000;
-const hostname = "0.0.0.0";
+db.connect(cfg.db);
 
-let hostDb   = "127.0.0.1";
-let portDb   = 27017;
-let nameDb = "ourDb";
-
-db.connect(hostDb,portDb,nameDb);
-
-server.init(port,hostname);
+server.init(cfg.server);
 
 routes.use('/', index);
 
