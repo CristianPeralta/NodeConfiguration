@@ -23,18 +23,21 @@ exports.init = function (req,res) {
 
   res.json = function (data) {
     this.writeHead(200,{'Content-Type':'application/json'});
-    this.send(JSON.stringify(data));
+    this.write(JSON.stringify(data));
+    this.end();
+    return;
   }
 
-  res.send = function(file, code = 200) {
+  res.send = function(file, code) {
+    if (!code) code = 200;
     if(file){
         this.writeHead(200,{ 'Content-Type': 'text/html' })
         this.write(file);
         this.end();
         return;
     }
-    this.writeHead(code,{'Content-Type':'text/plain'});
-    this.write('status :'+code);
+    this.writeHead(code,{'Content-Type':'application/json'});
+    this.write(code);
     this.end();
     return;
   }

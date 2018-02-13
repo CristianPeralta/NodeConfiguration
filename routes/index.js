@@ -3,9 +3,9 @@ import Router from '../server/classRouter';
 var routes = new Router();
 
 routes.get('/',userController.index);
-routes.get('/delete',userController.delete);
 routes.post('/store',userController.store);
-routes.post('/profile',userController.profile);
+routes.get('/delete',userController.delete);
+routes.get('/users',userController.getUsers);
 routes.put('/edit',userController.edit);
 
 

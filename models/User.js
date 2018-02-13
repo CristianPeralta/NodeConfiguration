@@ -15,6 +15,16 @@ module.exports.register = (data) => {
 };
 
 
+module.exports.getAll = (data) => {
+  users = global.db.collection("users");
+  return new Promise((resolve,reject)=> users.find().toArray((err,result)=>{
+      if(err) reject(err);
+      resolve(result);
+  } ))
+};
+
+
+
 module.exports.delete = () => {
   users = global.db.collection("users");
   return new Promise((resolve,reject)=> users.remove((err,result) => {

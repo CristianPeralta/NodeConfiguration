@@ -16,9 +16,15 @@ module.exports = {
 				return res.send(null,503);
 			});
   },
-  user(req,res){
-    res.render('index',{data:'Rendering data from controller - User'});
-    console.log(req.query);
+  getUsers(req,res){
+		User.getAll()
+			.then((result) => {
+				return res.json(result);
+			})
+			.catch((err) => {
+        console.log(err);
+				return res.send(null,503);
+			});
   },
   profile(req,res){
     res.render('index',{data:'Rendering data from controller - Profile'});
