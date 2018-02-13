@@ -29,10 +29,13 @@ module.exports = {
   },
   update(req,res){
     const data = req.body;
-		User.findOne(data)
-			.then((result) => {
-        console.log(result);
-				return res.json(result);
+    let id = data._id;
+    console.log(id);
+    delete data._id;
+		User.update({'_id' : id},data)
+			.then((user) => {
+        console.log(user);
+				return res.json(user);
 			})
 			.catch((err) => {
         console.log(err);

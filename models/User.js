@@ -36,13 +36,12 @@ module.exports.findOne = (data) => {
 };
 
 
-module.exports.update = (data) => {
+module.exports.update = (dataFilter,data) => {
+  dataFilter._id = ObjectID(dataFilter._id);
   users = global.db.collection("users");
-  let {email, name } = data;
-  let user = {email, name };
-  return new Promise((resolve,reject)=> users.update(user,(err,result)=>{
+  return new Promise((resolve,reject)=> users.update(dataFilter,data,(err,result)=>{
       if(err) reject(err);
-      resolve(result.ops[0]);
+      resolve(result.result);
   } ))
 };
 
