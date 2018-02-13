@@ -4,9 +4,9 @@ module.exports = {
   index(req,res){
     res.render('index',{data:'Rendering data from controller'});
   },
-  store(req,res){
+  create(req,res){
     const data = req.body;
-		User.register(data)
+		User.create(data)
 			.then((result) => {
         console.log(result);
 				return res.json(result);
@@ -16,9 +16,10 @@ module.exports = {
 				return res.send(null,503);
 			});
   },
-  getUsers(req,res){
-		User.getAll()
+  read(req,res){
+		User.read()
 			.then((result) => {
+        console.log(result);
 				return res.json(result);
 			})
 			.catch((err) => {
@@ -26,18 +27,22 @@ module.exports = {
 				return res.send(null,503);
 			});
   },
-  profile(req,res){
-    res.render('index',{data:'Rendering data from controller - Profile'});
-    console.log(req.body);
-  },
-  edit(req,res){
-    res.render('index',{data:'Rendering data from controller - Edit'});
-    console.log(req.body);
+  update(req,res){
+    const data = req.body;
+		User.findOne(data)
+			.then((result) => {
+        console.log(result);
+				return res.json(result);
+			})
+			.catch((err) => {
+        console.log(err);
+				return res.send(null,503);
+			});
   },
   delete(req,res){
     User.delete()
       .then((result) => {
-        return res.send();
+        return res.json(result);
       })
       .catch((err) => {
         console.log(err);

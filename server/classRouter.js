@@ -3,10 +3,12 @@ class Router {
     this.gets = {};
     this.posts = {};
     this.puts = {};
+    this.deletes = {};
     this.route = {
         'GET':this.gets,
         'POST':this.posts,
-        'PUT':this.puts
+        'PUT':this.puts,
+        'DELETE':this.deletes
     }
     return this;
   }
@@ -18,6 +20,9 @@ class Router {
   }
   put (path,cb) {
     this.puts[path] = cb;
+  }
+  delete (path,cb) {
+    this.deletes[path] = cb;
   }
 }
 

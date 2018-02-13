@@ -3,10 +3,11 @@ import Router from '../server/classRouter';
 var routes = new Router();
 
 routes.get('/',userController.index);
-routes.post('/store',userController.store);
-routes.get('/delete',userController.delete);
-routes.get('/users',userController.getUsers);
-routes.put('/edit',userController.edit);
+
+routes.post('/create',userController.create);
+routes.get('/read',userController.read);
+routes.put('/update',userController.update);
+routes.delete('/delete',userController.delete);
 
 
 export default routes;
